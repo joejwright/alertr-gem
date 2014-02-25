@@ -1,15 +1,15 @@
 require 'httparty'
 require "alertr/version"
 
-module Alertr
+class AlertrClient
 
-  def send(title, body, list, level=:info)
+  def self.alert(title, body, list, level = :info)
 
     alert = {
       :title => title,
       :body => body,
       :list => list,
-      :level => level
+      :level => level.to_s
     }
 
     HTTParty.post('http://alertr.co/api/v1/notifications', :body => alert )
