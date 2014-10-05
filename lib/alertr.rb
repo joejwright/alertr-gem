@@ -3,7 +3,7 @@ require "alertr/version"
 
 class AlertrClient
 
-  def self.alert(title, body, list, level = :info)
+  def self.alert(list, title, body, level = :info)
 
     alert = {
       :title => title,
@@ -12,7 +12,7 @@ class AlertrClient
       :level => level.to_s
     }
 
-    HTTParty.post('http://alertr.co/api/v1/notifications', :body => alert )
+    HTTParty.post('http://alertr.co/api/v1/alerts', :body => alert )
 
   end
 end
